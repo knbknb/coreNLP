@@ -51,7 +51,7 @@ initCoreNLP = function(libLoc, type = c("english", "english_all", "english_fast"
   path = Sys.glob(paste0(libLoc,"/*.jar"))
 
   # Start java engine, if not already done, and add to classpath
-  options(java.parameters = paste0("-Xmx", mem))
+  options(java.parameters = paste0("-XX:+UseConcMarkSweepGC -XX:-UseGCOverheadLimit -Xmx", mem))
   rJava::.jinit()
   rJava::.jaddClassPath(path)
 
